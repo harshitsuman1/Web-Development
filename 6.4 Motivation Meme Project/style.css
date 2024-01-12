@@ -1,0 +1,32 @@
+*{
+    background-color: black;
+}
+div{
+   width: 50%;
+   margin-top: 5%;
+   color: white;
+   margin-left: 25%;
+   text-align: center;
+   font-family: 'Libre Baskerville', serif;
+}
+img{
+    border: 5px solid white;
+    width: 100%;
+}
+/* #b{
+    color: orange;
+} */
+h1[draggable]{
+    color: purple;
+}
+.a{
+    color:red;
+}
+
+h1{
+    text-transform: uppercase;
+    color: blue;
+    color:bisque !important;
+}
+
+
