@@ -1,37 +1,27 @@
 let buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
+let userClickedPattern = [];
 function newSequence()
 {
     let rand = Math.floor(Math.random() * 3);
     let randomChosenColour = buttonColors[rand];
     gamePattern.push(randomChosenColour);
-}
-$("#randomChosenColour").fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
-$("#randomChosenColour").click(function () {
+    $(`#${randomChosenColour}`).fadeIn(100).fadeOut(100).fadeIn(100);
     sound(randomChosenColour);
-})
-let audio;
-function sound(clr) {
-    switch (clr) {
-    case "red":
-        audio = new Audio("./sounds/red.mp3")
-        audio.play();
-        break;
-    case "blue":
-        audio = new Audio("./sounds/blue.mp3")
-        audio.play();
-        break;
-    case "green":
-        audio = new Audio("./sounds/green.mp3")
-        audio.play();
-        break;
-    case "yellow":
-        audio = new Audio("./sounds/yellow.mp3")
-        audio.play();
-        break;
-    default:
-        audio = new Audio("./sounds/wrong.mp3")
-        audio.play();
-        break;
 }
+$(".btn").click(function () {
+    let userChosenColour = this.id;
+    userClickedPattern.push(userChosenColour);
+    sound(userChosenColour);
+    animatePress(userChosenColour);
+})
+function sound(clr) {
+    let audio = new Audio(`./sounds/${clr}.mp3`)
+    audio.play();
+}
+function animatePress(currentColour) {
+    $(`#${currentColour}`).addClass("pressed");
+    setTimeout(() => {
+        $(`#${currentColour}`).removeClass("pressed")
+    }, 100);
 }
